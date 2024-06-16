@@ -12,8 +12,8 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-lg rounded-none border-b-2 font-bold flex justify-center border-orange-600 text-orange-500"
-              : "font-bold text-lg flex justify-center rounded-none text-orange-500"
+              ? "text-lg rounded-none border-b-2 font-bold flex justify-center border-white text-white"
+              : "font-bold text-lg flex justify-center rounded-none text-white"
           }
           to="/"
         >
@@ -25,8 +25,8 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-lg rounded-none border-b-2 font-bold flex justify-center border-orange-600 text-orange-500"
-              : "font-bold text-lg flex justify-center rounded-none text-orange-500"
+              ? "text-lg rounded-none border-b-2 font-bold flex justify-center border-white text-white"
+              : "font-bold text-lg flex justify-center rounded-none text-white"
           }
           to="/allMeals"
         >
@@ -38,9 +38,9 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-lg rounded-none border-b-2 font-bold flex justify-center border-orange-600 text-orange-500"
-              : "font-bold text-lg flex justify-center rounded-none text-orange-500"
-          }
+          ? "text-lg rounded-none border-b-2 font-bold flex justify-center border-white text-white"
+          : "font-bold text-lg flex justify-center rounded-none text-white"
+         }
           to="/upcomingMeals"
         >
           Upcoming Meals
@@ -50,7 +50,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" bg-blue-200 w-full z-10 relative">
+    <div className=" bg-opacity-50 bg-blue-500 text-white w-full z-10 fixed">
     <div className=" max-w-[2400px] mx-auto">
       <div className="navbar lg:w-[86%] p-0  w-[95%] mx-auto">
         <div className="navbar-start lg:w-[50%] w-full">
@@ -58,7 +58,7 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn rounded-none flex btn-sm px-1 btn-ghost lg:hidden"
+              className="btn rounded-none flex btn-sm px-1 btn-ghost lg:hidden "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,13 +77,13 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-none w-52"
+              className="menu menu-sm dropdown-content mt-4 z-[1] p-2 shadow bg-blue-500 rounded-none bg-opacity-50 w-52"
             >
               {navLinks}
             </ul>
           </div>
           <Link to='/' className="md:text-2xl text-xl font-extrabold merienda">
-            Edu<span className="text-blue-600">Feast</span>{" "} Hostel
+            Edu<span className="text-yellow-600">Feast</span>{" "} Hostel
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -91,8 +91,8 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end lg:w-[50%] w-[30%]">
-        <IoMdNotificationsOutline className="text-orange-600 md:mr-4 mr-1 text-2xl" />
-            <Link to='/login' className="font-bold md:text-xl border-x-2 border-orange-600 rounded-none md:px-3 px-1 border-y-0 text-orange-500 text-sm  hover:text-black">
+        <IoMdNotificationsOutline className="text-white md:mr-4 mr-1 text-2xl" />
+            <Link to='/login' className="font-bold md:text-xl border-x-2 border-white rounded-none md:px-3 px-1 border-y-0 text-white text-sm  hover:text-black">
               Join Us
             </Link>
           </div>
