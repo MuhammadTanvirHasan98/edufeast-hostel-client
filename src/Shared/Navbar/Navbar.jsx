@@ -50,7 +50,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" bg-blue-200 fixed w-full z-10 ">
+    <div className=" bg-blue-200 w-full z-10 relative">
     <div className=" max-w-[2400px] mx-auto">
       <div className="navbar lg:w-[86%] p-0  w-[95%] mx-auto">
         <div className="navbar-start lg:w-[50%] w-full">

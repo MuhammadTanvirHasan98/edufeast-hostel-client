@@ -1,9 +1,13 @@
+import Banner from "../../Components/Home/Banner/Banner";
+import CategoryTabs from "../../Components/Home/Tabs/CategoryTabs";
+
 
 
 const Home = () => {
   return (
-    <div>
-       <h1>This is home!</h1>
+    <div className="space-y-44">
+       <Banner/>
+       <CategoryTabs/>
     </div>
   );
 };
