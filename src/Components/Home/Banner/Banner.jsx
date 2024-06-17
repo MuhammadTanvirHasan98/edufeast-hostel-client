@@ -27,7 +27,7 @@ const Banner = () => {
           {/* Slide 1 */}
           <SwiperSlide>
             <div>
-              <div className="lg:min-h-[900px] md:min-h-[600px] min-h-[520px] bg-[url('https://i.ibb.co/ftYMq2T/hostel-banner.jpg')] bg-no-repeat bg-cover bg-center flex justify-center items-center py-8 md:py-0">
+              <div className="lg:min-h-[900px] min-h-[600px]  bg-[url('https://i.ibb.co/ftYMq2T/hostel-banner.jpg')] bg-no-repeat bg-cover bg-center flex justify-center items-center py-8 md:py-0">
                 {/* Slider left Section */}
                 <div className="w-full mx-auto flex flex-col   justify-center items-center md:gap-10 gap-4 p-2 absolute h-full  md:bg-gradient-to-r bg-gradient-to-t from-[#191919fa]  to-[rgba(21, 21, 21, 0.00)]  ">
                   <div className="md:w-2/3 text-center text-white">

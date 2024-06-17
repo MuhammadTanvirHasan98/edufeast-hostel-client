@@ -84,14 +84,17 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <Link to='/' className="md:text-2xl text-xl font-extrabold merienda">
-            Edu<span className="text-yellow-600">Feast</span>{" "} Hostel
+          <Link to='/' className="md:text-2xl text-xl font-extrabold merienda flex items-center">
+            Edu<span className="text-yellow-600">Feast</span>{" "} Hostel  <IoMdNotificationsOutline className="text-white md:mr-4 ml-2 text-2xl block lg:hidden" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
 
+        <div className="lg:block hidden">
+        <IoMdNotificationsOutline className="text-white md:mr-4 mr-1 text-2xl" />
+        </div>
        {
         user ? (
           <div className="navbar-end">
@@ -129,13 +132,13 @@ const Navbar = () => {
         ):
         (
           <div className="navbar-end lg:w-[50%] w-[30%]">
-          <IoMdNotificationsOutline className="text-white md:mr-4 mr-1 text-2xl" />
               <Link to='/login' className="font-bold md:text-xl border-x-2 border-white rounded-none md:px-3 px-1 border-y-0 text-white text-sm  hover:text-black">
                 Join Us
               </Link>
             </div>
         )
        }
+
       </div>
       </div>
     </div>

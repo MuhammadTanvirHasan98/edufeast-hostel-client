@@ -13,7 +13,7 @@ const Membership = () => {
 
     
     {/* Card 1 */}
-      <div className="lg:mb-0 mb-20 shadow-2xl border-2 border-cyan-200">
+      <div className="lg:mb-0 mb-20 shadow-2xl border-2 border-cyan-200 hover:bg-cyan-50 transition duration-500">
          <div className="bg-gradient-to-tr from-cyan-300 to-cyan-600 m-10 -mt-16  p-5 text-center text-white space-y-3 shadow-2xl">
            <h1 className="text-2xl font-bold ">SILVER PLAN</h1>
            <p className="lg:text-6xl text-5xl font-semibold">$29</p>
@@ -34,8 +34,8 @@ const Membership = () => {
       </div>
       
       {/* Card 2 */}
-      <div className="lg:mb-0 mb-20 shadow-2xl border-2 border-yellow-200">
-         <div className="bg-gradient-to-tr from-yellow-400 to-yellow-600 m-10 -mt-16  p-5 text-center text-white space-y-3 shadow-2xl">
+      <div className="lg:mb-0 mb-20 shadow-2xl border-2 border-yellow-200 hover:bg-yellow-50 transition duration-500">
+         <div className="bg-gradient-to-tr from-yellow-400 to-yellow-600 m-10 -mt-16  p-5 text-center text-white space-y-3 shadow-2xl ">
            <h1 className="text-2xl font-bold ">GOLD PLAN</h1>
            <p className="lg:text-6xl text-5xl font-semibold">$69</p>
            <p className="text-lg">PER MONTH</p>
@@ -54,14 +54,14 @@ const Membership = () => {
       </div>
 
       {/* Card 3 */}
-      <div className="lg:mb-0 mb-20 shadow-2xl border-2 border-blue-200">
-         <div className="bg-gradient-to-tr from-blue-300 to-blue-600 m-10 -mt-16  p-5 text-center text-white space-y-3 shadow-2xl">
+      <div className="lg:mb-0 mb-20 shadow-2xl border-2 border-blue-200 hover:bg-blue-50 transition duration-500">
+         <div className="bg-gradient-to-tr from-blue-300 to-blue-600 m-10 -mt-16  p-5 text-center text-white space-y-3 shadow-2xl ">
            <h1 className="text-2xl font-bold ">PLATINUM PLAN</h1>
            <p className="lg:text-6xl text-5xl font-semibold">$99</p>
            <p className="text-lg">PER MONTH</p>
          </div>
 
-         <div className="lg:px-10 px-6 lg:pb-10 pb-6 space-y-2 font-semibold ">
+         <div className="lg:px-10 px-6 lg:pb-10 pb-6 space-y-2 font-semibold">
            <p className="text-lg flex items-center gap-2 text-gray-500 xl:ml-4 ml-0"><IoCheckmarkDoneOutline  className="text-blue-600"/>Send unlimited meals requests</p>
            <p className="text-lg flex items-center gap-2 text-gray-500 xl:ml-4 ml-0"><IoCheckmarkDoneOutline  className="text-blue-600"/>10 meals per day</p>
            <p className="text-lg flex items-center gap-2 text-gray-500 xl:ml-4 ml-0"><IoCheckmarkDoneOutline  className="text-blue-600"/>50 premium meals</p>

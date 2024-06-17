@@ -1,14 +1,16 @@
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
-import useAuth from "../Hooks/useAuth";
+import useAuth from "../../Hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import loginImg from '../../assets/images/loginImg.jpg'
+import { ImSpinner9 } from "react-icons/im";
 
 
 
 const Login = () => {
 
-  const {user, loginUser, loginWithGoogle} = useAuth();
+  const {user, loginUser,loading, setLoading, loginWithGoogle} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
@@ -37,6 +39,7 @@ const Login = () => {
       catch(err){
          console.log(err.message)
          toast.error(err.message);
+         setLoading(false)
       }
   }
 
@@ -50,6 +53,7 @@ const Login = () => {
      catch(err){ 
         console.error(err.message);
         toast.error(err.message);
+        setLoading(false)
      } 
   }
 
@@ -57,11 +61,11 @@ const Login = () => {
 
   return (
     <div className='flex justify-center items-center'>
-      <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl my-32'>
+      <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl my-32 border-2 border-blue-200'>
         <div
           className='hidden bg-cover bg-center lg:block lg:w-1/2'
           style={{
-            backgroundImage: `url('https://i.ibb.co/nBwC4d3/login.png')`,
+            backgroundImage: `url('${loginImg}')`,
           }}
         ></div>
 
@@ -102,6 +106,7 @@ const Login = () => {
                 placeholder="Enter your email address"
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='email'
+                required
               />
             </div>
 
@@ -122,6 +127,7 @@ const Login = () => {
                 placeholder="Enter your password"
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='password'
+                required
               />
             </div>
             <div className='mt-6'>
@@ -129,7 +135,11 @@ const Login = () => {
                 type='submit'
                 className='w-full px-6 py-2 text-lg font-semibold tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 '
               >
-                Login
+                {loading ? (
+                <ImSpinner9 className='animate-spin m-auto' />
+              ) : (
+                'Login'
+              )}
               </button>
             </div>
           </form>
