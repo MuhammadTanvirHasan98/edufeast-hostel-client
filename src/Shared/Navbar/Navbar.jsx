@@ -1,9 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import useAuth from "../../Hooks/useAuth";
 
 
 const Navbar = () => {
 
+  const{ user, logOut} = useAuth();
 
 
   const navLinks = (
@@ -90,12 +92,50 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
 
-        <div className="navbar-end lg:w-[50%] w-[30%]">
-        <IoMdNotificationsOutline className="text-white md:mr-4 mr-1 text-2xl" />
-            <Link to='/login' className="font-bold md:text-xl border-x-2 border-white rounded-none md:px-3 px-1 border-y-0 text-white text-sm  hover:text-black">
-              Join Us
-            </Link>
+       {
+        user ? (
+          <div className="navbar-end">
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div  className="w-10 rounded-full">
+                <img
+                  alt="user image"
+                  src={user?.photoURL}
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="mt-1.5 z-[1] p-2 shadow menu menu-sm dropdown-content  rounded-none bg-opacity-50 bg-blue-500 w-52 space-y-3 font-semibold"
+            >
+              
+                <p className="text-center">{user?.displayName} </p>
+          
+              <li>
+                <Link to='/dashboard' className="flex justify-center text-center bg-gradient-to-tl from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-400 hover:text-yellow-400 text-white rounded-none">Dashboard</Link>
+              </li>
+              <li>
+                <Link
+                 onClick={()=> logOut()}
+                 className="text-center block bg-gradient-to-tl from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-400 hover:text-yellow-400 text-white rounded-none">Logout</Link>
+              </li>
+            </ul>
           </div>
+          </div>
+        ):
+        (
+          <div className="navbar-end lg:w-[50%] w-[30%]">
+          <IoMdNotificationsOutline className="text-white md:mr-4 mr-1 text-2xl" />
+              <Link to='/login' className="font-bold md:text-xl border-x-2 border-white rounded-none md:px-3 px-1 border-y-0 text-white text-sm  hover:text-black">
+                Join Us
+              </Link>
+            </div>
+        )
+       }
       </div>
       </div>
     </div>
