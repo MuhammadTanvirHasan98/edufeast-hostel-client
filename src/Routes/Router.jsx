@@ -6,6 +6,7 @@ import Login from "../Authentication/Login/Login";
 import Register from "../Authentication/Register/Register";
 import ErrorPage from "../Pages/ErrorPage";
 import AllMeals from "../Pages/AllMeals/AllMeals";
+import DashboardLayout from "../Layouts/DashboardLayout";
 
 
 
@@ -34,6 +35,32 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:'/dashboard',
+    element:<DashboardLayout/>,
+    children:[
+      {
+         index: true,
+        element: <h1>Dashboard!</h1>
+      },
+      {
+        path:'profile',
+        element:<h1>Profile!</h1>
+      },
+      {
+        path:'requestedMeals',
+        element:<h1>Requested Meals!</h1>
+      },
+      {
+        path:'myReviews',
+        element:<h1>My Reviews!</h1>
+      },
+      {
+        path:'paymentHistory',
+        element:<h1>Payment History</h1>
+      },
+    ]
+  }
 ]);
 
 export default router;

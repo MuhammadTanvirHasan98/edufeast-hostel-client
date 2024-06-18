@@ -10,12 +10,12 @@ import { Toaster } from "react-hot-toast";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
-  <AuthProvider>
-     <Toaster position="top-center" reverseOrder={false} />
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  </AuthProvider>
-  // </React.StrictMode>,
+  <React.StrictMode>
+    <Toaster position="top-center" reverseOrder={false} />
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </AuthProvider>
+  </React.StrictMode>
 );

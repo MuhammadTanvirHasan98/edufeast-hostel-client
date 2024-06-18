@@ -44,9 +44,11 @@ const AllMeals = () => {
 
   const priceOptions = [
     { value: null, label: "Select" },
-    { value: "10-20", label: "$100 - $200" },
-    { value: "20-30", label: "$200 - $300" },
-    { value: "30-40", label: "$300 - $400" },
+    { value: "10-20", label: "$10 - $20" },
+    { value: "20-30", label: "$20 - $30" },
+    { value: "30-40", label: "$30 - $40" },
+    { value: "40-50", label: "$40 - $50" },
+    { value: "50-100", label: "$50 - $100" },
   ];
 
   return (

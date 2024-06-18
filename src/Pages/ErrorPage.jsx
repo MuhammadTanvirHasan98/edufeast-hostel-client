@@ -18,8 +18,12 @@ const ErrorPage = () => {
         You are lost! The page you are looking for might have been removed or
         temporarily unavailable.
       </p>
-      <Link>
+      <Link to='/'>
         <button className="btn btn-sm btn-primary my-4 rounded-none text-blue-500 btn-outline">Go to Home</button>
+      </Link>
+      <p>Or</p>
+      <Link to='/dashboard'>
+        <button className="btn btn-sm btn-primary my-4 rounded-none text-blue-500 btn-outline">Go to Dashboard</button>
       </Link>
     </div>
   );

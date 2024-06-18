@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import loginImg from '../../assets/images/loginImg.jpg'
 import { ImSpinner9 } from "react-icons/im";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 
@@ -13,6 +14,7 @@ const Login = () => {
   const {user, loginUser,loading, setLoading, loginWithGoogle} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const axiosPublic = useAxiosPublic();
   console.log(location);
   const gotoThere = location.state || '/';
 
@@ -46,9 +48,20 @@ const Login = () => {
   const handleGoogleLogin = async () =>{
   
      try{
-       await loginWithGoogle()
-       toast.success("Successfully logged in with google!")
-       navigate(gotoThere, {replace:true});
+       const {user}  =  await loginWithGoogle()
+       
+       const userInfo = {
+        name: user?.displayName,
+        email:user?.email,
+        role: "user",
+        badge: "Bronze",
+     };
+  
+     const { data } = await axiosPublic.post("/users", userInfo);
+      console.log(data);
+      toast.success("Successfully logged in with google!")
+      navigate(gotoThere, {replace:true});
+     
      }
      catch(err){ 
         console.error(err.message);
