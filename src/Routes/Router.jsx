@@ -5,6 +5,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Authentication/Login/Login";
 import Register from "../Authentication/Register/Register";
 import ErrorPage from "../Pages/ErrorPage";
+import AllMeals from "../Pages/AllMeals/AllMeals";
 
 
 
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element:<Home/>
+      },
+      {
+        path:'/allMeals',
+        element:<AllMeals/>
       },
       {
         path:'/login',
