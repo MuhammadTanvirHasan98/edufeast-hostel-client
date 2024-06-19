@@ -8,7 +8,7 @@ const DashboardLayout = () => {
        <Sidebar/>
                      
        {/* Outlet */}
-       <div className="flex-1 md:ml-64 p-10">
+       <div className="flex-1 md:ml-64 md:p-10 p-6 ">
          <Outlet/>
        </div>
       

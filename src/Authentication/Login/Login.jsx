@@ -53,6 +53,7 @@ const Login = () => {
        const userInfo = {
         name: user?.displayName,
         email:user?.email,
+        image:user?.photoURL,
         role: "user",
         badge: "Bronze",
      };

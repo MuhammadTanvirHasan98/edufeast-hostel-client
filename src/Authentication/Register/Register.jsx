@@ -48,6 +48,7 @@ const Register = () => {
         const userInfo = {
            name,
            email,
+           image:image_url,
            role: "user",
            badge: "Bronze",
         };

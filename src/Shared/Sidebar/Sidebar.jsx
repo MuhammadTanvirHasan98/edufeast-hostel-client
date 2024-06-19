@@ -21,7 +21,7 @@ const Sidebar = () => {
   const [isActive, setActive] = useState(false);
   const navigate = useNavigate();
 
-  const isAdmin = true;
+  const isAdmin = false;
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -58,7 +58,7 @@ const Sidebar = () => {
       >
         <div>
           <div className="flex justify-between gap-2">
-            <div className="w-full  flex px-4 py-2 shadow-lg  justify-center items-center bg-cyan-50 mx-auto">
+            <div className="w-full  flex px-4 py-2 shadow-lg  justify-center items-center bg-gradient-to-tr  from-cyan-50 to-cyan-200 mx-auto">
               <Link to="/">
                 <p className="text-xl font-bold">
                   Edu<span className="text-yellow-600">Feast</span> Hostel

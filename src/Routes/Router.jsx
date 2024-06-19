@@ -7,6 +7,7 @@ import Register from "../Authentication/Register/Register";
 import ErrorPage from "../Pages/ErrorPage";
 import AllMeals from "../Pages/AllMeals/AllMeals";
 import DashboardLayout from "../Layouts/DashboardLayout";
+import UserProfile from "../Pages/Dashboard/Profiles/UserProfile";
 
 
 
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path:'profile',
-        element:<h1>Profile!</h1>
+        element:<UserProfile/>
       },
       {
         path:'requestedMeals',
