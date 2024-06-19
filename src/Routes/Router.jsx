@@ -8,6 +8,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import AllMeals from "../Pages/AllMeals/AllMeals";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import UserProfile from "../Pages/Dashboard/Profiles/UserProfile";
+import MealDetails from "../Components/Common/MealDetails";
 
 
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path:'/allMeals',
         element:<AllMeals/>
+      },
+      {
+        path:'/mealDetails/:id',
+        element:<MealDetails/>
       },
       {
         path:'/login',
