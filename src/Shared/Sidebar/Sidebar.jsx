@@ -82,7 +82,8 @@ const Sidebar = () => {
               {isAdmin ? (
                 <>
                   <NavLink
-                    to="/dashboard/adminProfile"
+                    to="/dashboard"
+                    end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
                         isActive
@@ -99,6 +100,7 @@ const Sidebar = () => {
                   {/* Manage Users: */}
               <NavLink
                 to="manageUsers"
+                end
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100  hover:text-cyan-600 ${
                     isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
@@ -112,6 +114,7 @@ const Sidebar = () => {
               {/* Add Meal: */}
               <NavLink
                 to="addMeal"
+                end
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
                     isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
@@ -125,6 +128,7 @@ const Sidebar = () => {
               {/* All Meals:*/}
               <NavLink
                 to="allMeals"
+                end
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
                     isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
@@ -139,6 +143,7 @@ const Sidebar = () => {
               {/* All Reviews: */}
               <NavLink
                 to="allReviews"
+                end
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100  hover:text-cyan-600 ${
                     isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
@@ -152,6 +157,7 @@ const Sidebar = () => {
               {/* Serve Meals: */}
               <NavLink
                 to="serveMeals"
+                end
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
                     isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
@@ -165,6 +171,7 @@ const Sidebar = () => {
               {/* Upcoming Meals: */}
               <NavLink
                 to="upcomingMeals"
+                end
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
                     isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
@@ -179,7 +186,8 @@ const Sidebar = () => {
               ) : (
                 <>
                   <NavLink
-                    to="/dashboard/profile"
+                    to="/dashboard"
+                    end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
                         isActive
@@ -196,6 +204,7 @@ const Sidebar = () => {
                   {/* Statistics */}
                   <NavLink
                     to="requestedMeals"
+                    end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100  hover:text-cyan-600 ${
                         isActive
@@ -211,6 +220,7 @@ const Sidebar = () => {
                   {/* Add Room */}
                   <NavLink
                     to="myReviews"
+                    end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
                         isActive
@@ -226,6 +236,7 @@ const Sidebar = () => {
                   {/* My Listing */}
                   <NavLink
                     to="paymentHistory"
+                    end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
                         isActive

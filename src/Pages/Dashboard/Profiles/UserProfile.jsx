@@ -1,21 +1,23 @@
 import LoadingSpinner from "../../../Components/Common/LoadingSpinner";
+import useAuth from "../../../Hooks/useAuth";
 import useProfile from "../../../Hooks/useProfile";
 
 const UserProfile = () => {
   const { profile, isLoading } = useProfile();
+  const {loading} = useAuth();
   console.log(profile, isLoading);
 
   return (
     <div>
       <div>
         <div>
-          {isLoading ? (
+          {isLoading || loading ? (
             <>
               <LoadingSpinner />
             </>
           ) : (
             <>
-              <div className="min-h-[calc(100vh-80px)] flex flex-col md:justify-center border-2 border-cyan-300 items-center space-y-7 py-10">
+              <div className="min-h-[calc(100vh-80px)] flex flex-col  border-2 border-cyan-300 items-center space-y-7 py-10">
                 <div>
                 <p className="text-3xl font-semibold text-cyan-600">Your Profile Info</p>
                 <hr className="border-2  border-cyan-100 w-[220px]"/>

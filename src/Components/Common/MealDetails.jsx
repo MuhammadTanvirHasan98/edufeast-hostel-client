@@ -6,6 +6,7 @@ import { AiOutlineLike } from "react-icons/ai";
 import { IoStarOutline } from "react-icons/io5";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import Swal from 'sweetalert2'
 import useAuth from "../../Hooks/useAuth";
 import ReviewModal from "../Modals/ReviewModal";
 
@@ -18,8 +19,8 @@ const MealDetails = () => {
 
   const {
     data: mealInfo = {},
-    isLoading,
-    refetch,
+    isLoading: isMealLoading,
+    refetch: refetchMeal,
   } = useQuery({
     queryKey: ["meal-details", id],
     queryFn: async () => {
@@ -39,14 +40,36 @@ const MealDetails = () => {
     rating,
     description,
     likes,
+    reviews,
     ingredients,
     admin,
   } = mealInfo;
-  console.log(mealInfo);
+  // console.log(mealInfo);
 
   const time = new Date(post_time).toLocaleTimeString();
   const date = new Date(post_time).toLocaleDateString();
   // console.log(time, date);
+
+
+
+
+  // Reviews Data fetching  for specific meal
+  
+   const {
+    data: allReviews = [],
+    isLoading: areReviewsLoading,
+    refetch: refetchReviews,
+  } = useQuery({
+    queryKey: ["all-reviews", _id],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(`/reviews/${_id}`);
+      return data;
+    },
+    //  enabled: !!id,
+  });
+
+  // console.log(allReviews);
+ 
 
   // Handle like button method
   const handleLike = async (id) => {
@@ -56,28 +79,77 @@ const MealDetails = () => {
       const { data } = await axiosSecure.patch(`/meal/${id}`);
       console.log(data);
       setLiked(true);
-      refetch();
+      refetchMeal();
     } catch (err) {
       console.log(err.message);
+      toast.error(err.message);
     }
   };
+
+  // Handle meal request method
+ 
+   const handleMealRequest = async()=>{
+       
+       const mealData = {
+         title, likes, reviews, status: 'Pending',
+         userInfo: {name:user?.displayName,email:user?.email},
+       }
+       console.log(mealData);
+      
+       try {
+        const { data } = await axiosSecure.post("/requestMeal", mealData);
+        console.log(data);
+        if (data.acknowledged){
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your meal request has been sent successfully.",
+            showConfirmButton: false,
+            timer: 2000
+          });
+        }
+      } catch (err) {
+        console.log(err.message);
+        toast.error(err.message);
+      }
+   }
 
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const review = form.review.value;
 
-    if (review.length > 100) return toast.error("Your character limit exceeds");
+    if (review.length > 70) return toast.error("Your character limit exceeds");
 
-    console.table({ review });
-
-    const userInfo = {
-      name: user?.displayName,
-      email: user?.email,
+    const reviewInfo = {
+      mealId: _id,
+      reviewer: {
+        name: user?.displayName,
+        image: user?.photoURL,
+        email: user?.email,
+      },
+      review,
+      mealLikes: likes,
+      review_count: reviews + 1,
+      mealTitle: title,
     };
-  
 
-    document.getElementById("review_modal").close();
+    // console.table({ reviewInfo });
+
+    try {
+      const { data } = await axiosSecure.post("/addReview", reviewInfo);
+      console.log(data);
+      if (data.acknowledged) {
+        document.getElementById("review_modal").close();
+        toast.success("Thanks for your Review!");
+        refetchReviews();
+        refetchMeal();
+        form.reset();
+      }
+    } catch (err) {
+      console.log(err.message);
+      toast.error(err.message);
+    }
   };
 
   const handleClose = () => {
@@ -86,7 +158,7 @@ const MealDetails = () => {
 
   return (
     <div className="py-32 md:px-20 px-6">
-      {isLoading ? (
+      {isMealLoading ? (
         <>
           <LoadingSpinner />
         </>
@@ -189,8 +261,10 @@ const MealDetails = () => {
                         {likes}
                       </p>
 
-                      <Link to={`/purchaseFood/${_id}`}>
-                        <button className="btn btn-outline  transition duration-500 hover:bg-[#385398] font-extrabold text-[#385398] merienda">
+                      <Link>
+                        <button
+                         onClick={handleMealRequest}
+                         className="btn btn-outline  transition duration-500  font-extrabold text-[#385398] merienda">
                           Meal Request
                         </button>
                       </Link>
@@ -207,7 +281,7 @@ const MealDetails = () => {
                     <p className="text-center text-xl font-bold  text-gray-600 merienda">
                       Reviews:{" "}
                       <span className="bg-slate-200 text-cyan-600 px-2 rounded-full">
-                        {2}
+                        {allReviews.length}
                       </span>
                     </p>
 
@@ -234,22 +308,34 @@ const MealDetails = () => {
 
                   {/* Users Review */}
                   <div className="space-y-2">
-                    <div className="border-2 bg-gradient-to-tr from-slate-50 to-blue-100 mt-2 p-1 flex items-center gap-2">
-                      <img
-                        src="https://lh3.googleusercontent.com/a/ACg8ocKXt6UzfnrGgyP2bP5491HlN-axl_mg0NUMJdPlfmRyZBN2JxwD=s96-c"
-                        className="w-11 h-11 rounded-md border-2  border-blue-300"
-                        alt="user-img"
-                      />
-                      <div>
-                        <h1 className="font-bold text-gray-600">Muhammad Tanvir Hasan</h1>
-                        <p className="text-sm text-gray-600">
-                          {" "}
-                          <span className="font-semibold">Review: </span>Lorem
-                          ipsum dolor sit amet consectetur 
-                        </p>
-                      </div>
-                    </div>
-              
+
+                    {
+                      areReviewsLoading ? <LoadingSpinner smallHeight={true}/> :
+                      <>
+                      {
+                        allReviews.map(review=>(
+                          <div key={review?._id} className="border-2 bg-gradient-to-tr from-slate-50 to-blue-100 mt-2 p-1 flex items-center gap-2">
+                          <img
+                            src={review?.reviewer?.image}
+                            className="w-11 h-11 rounded-md border-2  border-blue-300"
+                            alt="user-img"
+                          />
+                          <div>
+                            <h1 className="font-bold text-gray-600">
+                              {review?.reviewer?.name}
+                            </h1>
+                            <p className="text-sm text-gray-600">
+                              {" "}
+                              <span className="font-semibold">Review: </span>{review?.review}
+                            </p>
+                          </div>
+                        </div>
+                        ))
+                      }
+                       
+                      </>
+                    
+                    }
                   </div>
                 </div>
               </div>

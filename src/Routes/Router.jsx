@@ -9,6 +9,7 @@ import AllMeals from "../Pages/AllMeals/AllMeals";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import UserProfile from "../Pages/Dashboard/Profiles/UserProfile";
 import MealDetails from "../Components/Common/MealDetails";
+import RequestedMeals from "../Pages/Dashboard/User/RequestedMeals";
 
 
 
@@ -47,15 +48,11 @@ const router = createBrowserRouter([
     children:[
       {
          index: true,
-        element: <h1>Dashboard!</h1>
-      },
-      {
-        path:'profile',
-        element:<UserProfile/>
+         element:<UserProfile/>
       },
       {
         path:'requestedMeals',
-        element:<h1>Requested Meals!</h1>
+        element:<RequestedMeals/>
       },
       {
         path:'myReviews',
