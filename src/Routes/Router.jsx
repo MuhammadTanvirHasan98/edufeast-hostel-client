@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home/Home";
@@ -13,64 +12,113 @@ import RequestedMeals from "../Pages/Dashboard/User/RequestedMeals";
 import MyReviews from "../Pages/Dashboard/User/MyReviews";
 import PaymentHistory from "../Pages/Dashboard/User/PaymentHistory";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
-
-
-
+import DasAllMeals from "../Pages/Dashboard/Admin/DasAllMeals";
+import AllReviews from "../Pages/Dashboard/Admin/AllReviews";
+import ServeMeals from "../Pages/Dashboard/Admin/ServeMeals";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout/>,
-    errorElement:<ErrorPage/>,
-    children:[
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
+    children: [
       {
         index: true,
-        element:<Home/>
+        element: <Home />,
       },
       {
-        path:'/allMeals',
-        element:<AllMeals/>
+        path: "/allMeals",
+        element: <AllMeals />,
       },
       {
-        path:'/mealDetails/:id',
-        element:<MealDetails/>
+        path: "/mealDetails/:id",
+        element: (
+          <PrivateRoute>
+            <MealDetails />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'/login',
-        element:<Login/>
+        path: "/login",
+        element: <Login />,
       },
       {
-        path:'/register',
-        element:<Register/>
-      }
-    ]
+        path: "/register",
+        element: <Register />,
+      },
+    ],
   },
   {
-    path:'/dashboard',
-    element:<DashboardLayout/>,
-    children:[
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
       {
-         index: true,
-         element:<UserProfile/>
+        index: true,
+        element: (
+          <PrivateRoute>
+            <UserProfile />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'requestedMeals',
-        element:<RequestedMeals/>
+        path: "requestedMeals",
+        element: (
+          <PrivateRoute>
+            <RequestedMeals />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'myReviews',
-        element:<MyReviews/>
+        path: "myReviews",
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'paymentHistory',
-        element:<PaymentHistory/>
+        path: "paymentHistory",
+        element: (
+          <PrivateRoute>
+            <PaymentHistory />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'manageUsers',
-        element:<ManageUsers/>
+        path: "manageUsers",
+        element: (
+          <PrivateRoute>
+            <ManageUsers />
+          </PrivateRoute>
+        ),
       },
-    ]
-  }
+      {
+        path: "allMeals",
+        element: (
+          <PrivateRoute>
+            <DasAllMeals />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "allReviews",
+        element: (
+          <PrivateRoute>
+            <AllReviews />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "serveMeals",
+        element: (
+          <PrivateRoute>
+            <ServeMeals />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
 ]);
 
 export default router;

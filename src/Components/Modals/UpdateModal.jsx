@@ -17,7 +17,6 @@ const UpdateModal = ({ review, closeModal, isOpen, handleUpdateReview}) => {
   const { user } = useAuth();
 
   const{ mealLikes, mealTitle} = review;
-  console.log(mealLikes, mealTitle);
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
