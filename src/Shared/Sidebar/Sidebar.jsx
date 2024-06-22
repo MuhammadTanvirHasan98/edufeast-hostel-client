@@ -22,10 +22,8 @@ const Sidebar = () => {
   const [isActive, setActive] = useState(false);
   const navigate = useNavigate();
 
-  // const [isAdmin] = useAdmin;
+  const [isAdminData] = useAdmin();
 
-  // console.log(isAdmin);
-  const isAdmin = true;
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -83,7 +81,7 @@ const Sidebar = () => {
             {/*  Menu Items */}
             <nav>
               {/* Profile Menu */}
-              {isAdmin ? (
+              {isAdminData ? (
                 <>
                   <NavLink
                     to="/dashboard"
