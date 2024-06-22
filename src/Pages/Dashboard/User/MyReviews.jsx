@@ -236,14 +236,6 @@ const MyReviews = () => {
             </div>
           </div>
         )}
-{/* 
-        {selectedReview && (
-          <UpdateReviewModal
-            review={selectedReview}
-            handleUpdateReview={handleUpdateReview}
-            handleClose={handleClose}
-          />
-        )} */}
       </div>
     </div>
   );

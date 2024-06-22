@@ -27,7 +27,7 @@ const MealDetails = () => {
       const { data } = await axiosSecure.get(`/meal/${id}`);
       return data;
     },
-    //  enabled: !!id,
+     enabled: !!id,
   });
 
   const {
@@ -65,7 +65,7 @@ const MealDetails = () => {
       const { data } = await axiosSecure.get(`/reviews/${_id}`);
       return data;
     },
-    //  enabled: !!id,
+     enabled: !!_id,
   });
 
   // console.log(allReviews);

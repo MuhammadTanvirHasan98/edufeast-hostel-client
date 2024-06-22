@@ -7,6 +7,8 @@ const UserProfile = () => {
   const {loading} = useAuth();
   console.log(profile, isLoading);
 
+  const isAdmin = true;
+
   return (
     <div>
       <div>
@@ -37,6 +39,8 @@ const UserProfile = () => {
                   <div className="text-center font-semibold md:text-lg">
                     <p> {profile?.name}</p>
                     <p>{profile?.email}</p>
+                    {
+                      !isAdmin && 
                     <p>
                       Badge:{" "}
                       <span
@@ -48,6 +52,7 @@ const UserProfile = () => {
                         {profile?.badge}
                       </span>
                     </p>
+                    }
                   </div>
                 </div>
               </div>

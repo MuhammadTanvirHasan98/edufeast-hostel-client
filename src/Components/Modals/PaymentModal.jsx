@@ -72,7 +72,7 @@ const PaymentModal = ({ packageInfo, closeModal, isOpen }) => {
                   </div>
                 </div>
 
-                <form method="dialog">
+                <div method="dialog">
                   {/* if there is a button in form, it will close the modal */}
                   <div className="form-control">
                     <label className="label">
@@ -107,11 +107,11 @@ const PaymentModal = ({ packageInfo, closeModal, isOpen }) => {
                   <div className="mt-6">
                     {/* Checkout form */}
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm packageInfo={packageInfo}/>
+                        <CheckoutForm packageInfo={packageInfo} closeModal={closeModal}/>
                     </Elements>
 
                   </div>
-                </form>
+                </div>
                 <button
                   onClick={closeModal}
                   className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"

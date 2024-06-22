@@ -15,13 +15,17 @@ import { PiGitPullRequestBold } from "react-icons/pi";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
   const navigate = useNavigate();
 
-  const isAdmin = false;
+  // const [isAdmin] = useAdmin;
+
+  // console.log(isAdmin);
+  const isAdmin = true;
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
