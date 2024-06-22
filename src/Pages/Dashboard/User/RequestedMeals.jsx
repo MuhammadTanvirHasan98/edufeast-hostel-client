@@ -34,11 +34,10 @@ const RequestedMeals = () => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           const { data } = await axiosSecure.delete(`/requestedMeals/${id}`);
-          console.log(data);
           if (data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
-              text: "Your requested meal item has been deleted.",
+              text: "Your requested meal item has been deleted successfully.",
               icon: "success",
             });
             refetch();
@@ -51,7 +50,7 @@ const RequestedMeals = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-80px)] border-2 border-cyan-400 space-y-7">
+    <div className="min-h-[calc(100vh-80px)] border-2 border-cyan-300 space-y-7">
       <div className="m-2">
         <TableHeaderText
           text={"Your Requested Meals"}
@@ -61,7 +60,7 @@ const RequestedMeals = () => {
         {isLoading || loading ? (
           <LoadingSpinner />
         ) : (
-          <div className=" mt-6">
+          <div className="mt-6">
             <div className=" overflow-x-auto ">
               <div className="inline-block min-w-full py-2 align-middle ">
                 <div className="overflow-hidden border border-slate-200">
@@ -119,7 +118,7 @@ const RequestedMeals = () => {
 
                           {/* Food Origin */}
                           <td className="px-4 pl-8 py-4 text-sm text-gray-500  whitespace-nowrap">
-                            {meal?.reviews}66
+                            {meal?.reviews}
                           </td>
 
                           {/* Price */}

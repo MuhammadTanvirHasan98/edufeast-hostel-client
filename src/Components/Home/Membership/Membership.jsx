@@ -1,16 +1,33 @@
+import { useState } from "react";
 import HeadingPart from "../../Common/HeadingPart";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
+import PaymentModal from "../../Modals/PaymentModal";
 
 
 const Membership = () => {
+
+    const [packagePlan, setPackagePlan] = useState('');
+    const [price, setPrice] = useState(0);
+    const [isOpen, setIsOpen] = useState(false);
+
+
+    const packageInfo = {
+        price: price,
+        plan: packagePlan,
+    }
+
+    console.log(packageInfo);
+
+    const closeModal = ()=>{
+        setIsOpen(false);
+    }
+
   return (
 
     <div className="my-56 lg:w-[75%] w-[65%] mx-auto">
       <HeadingPart heading='Our Membership Packages' subHeading='Get Packages'/>
       
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:gap-16 gap-8 mt-32">
-
-
     
     {/* Card 1 */}
       <div className="lg:mb-0 mb-20 shadow-2xl border-2 border-cyan-200 hover:bg-cyan-50 transition duration-500">
@@ -28,7 +45,13 @@ const Membership = () => {
            
            {/* Button */}
            <div className="flex items-center justify-center">
-           <button className="btn text-white bg-gradient-to-tr from-cyan-300 to-cyan-600 hover:from-cyan-600 hover:to-cyan-300  rounded-none font-bold mt-4 px-10">Choose Plan</button>
+           <button
+           onClick={()=>{
+              setIsOpen(true);
+              setPackagePlan('Silver');
+              setPrice(29)
+           }}
+           className="btn text-white bg-gradient-to-tr from-cyan-300 to-cyan-600 hover:from-cyan-600 hover:to-cyan-300  rounded-none font-bold mt-4 px-10">Choose Plan</button>
            </div>
          </div>
       </div>
@@ -48,7 +71,13 @@ const Membership = () => {
            <p className="text-lg flex items-center  gap-2 text-gray-500 xl:ml-4 ml-0"><IoCheckmarkDoneOutline  className="text-yellow-600"/>Get 40% off next time</p>
            <div className="flex items-center justify-center">
 
-           <button className="btn text-white bg-gradient-to-tr from-yellow-300 to-yellow-600 hover:from-yellow-600 hover:to-yellow-300  rounded-none font-bold mt-4 px-10">Choose Plan</button>
+           <button 
+            onClick={()=>{
+              setIsOpen(true);
+              setPackagePlan('Gold');
+              setPrice(69)
+           }}
+           className="btn text-white bg-gradient-to-tr from-yellow-300 to-yellow-600 hover:from-yellow-600 hover:to-yellow-300  rounded-none font-bold mt-4 px-10">Choose Plan</button>
            </div>
          </div>
       </div>
@@ -68,12 +97,24 @@ const Membership = () => {
            <p className="text-lg flex items-center gap-2 text-gray-500 xl:ml-4 ml-0"><IoCheckmarkDoneOutline  className="text-blue-600"/>Get 65% off next time</p>
            <div className="flex items-center justify-center">
 
-           <button className="btn text-white bg-gradient-to-tr from-blue-300 to-blue-600 hover:from-blue-600 hover:to-blue-300  rounded-none font-bold mt-4 px-10">Choose Plan</button>
+           <button 
+            onClick={()=>{
+              setIsOpen(true);
+              setPackagePlan('Platinum');
+              setPrice(99)
+           }}
+           className="btn text-white bg-gradient-to-tr from-blue-300 to-blue-600 hover:from-blue-600 hover:to-blue-300  rounded-none font-bold mt-4 px-10">Choose Plan</button>
            </div>
          </div>
       </div>
   
-     
+     {
+       packageInfo && <PaymentModal 
+         isOpen={isOpen}
+         closeModal={closeModal}
+         packageInfo={packageInfo}
+       />
+     }
 
     </div>
     </div>

@@ -10,6 +10,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import UserProfile from "../Pages/Dashboard/Profiles/UserProfile";
 import MealDetails from "../Components/Common/MealDetails";
 import RequestedMeals from "../Pages/Dashboard/User/RequestedMeals";
+import MyReviews from "../Pages/Dashboard/User/MyReviews";
 
 
 
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path:'myReviews',
-        element:<h1>My Reviews!</h1>
+        element:<MyReviews/>
       },
       {
         path:'paymentHistory',
