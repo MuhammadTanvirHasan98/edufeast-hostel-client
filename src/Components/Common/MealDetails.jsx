@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import LoadingSpinner from "./LoadingSpinner";
 import { AiOutlineLike } from "react-icons/ai";
@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import Swal from 'sweetalert2'
 import useAuth from "../../Hooks/useAuth";
 import ReviewModal from "../Modals/ReviewModal";
+import useProfile from "../../Hooks/useProfile";
+import useAdmin from "../../Hooks/useAdmin";
 
 const MealDetails = () => {
   const { id } = useParams();
@@ -16,6 +18,10 @@ const MealDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [liked, setLiked] = useState(false);
+  const {profile} = useProfile();
+  console.log(profile)
+  const [isAdmin] = useAdmin();
+
 
   const {
     data: mealInfo = {},
@@ -86,10 +92,13 @@ const MealDetails = () => {
     }
   };
 
-  // Handle meal request method
- 
+
    const handleMealRequest = async()=>{
-       
+
+       if(isAdmin) return toast.error('Action can not be permitted!') 
+        
+        if(profile?.badge == 'Bronze') return toast.error('You have to purchase a package.') 
+
        const mealData = {
          title, likes, reviews, status: 'Pending',
          userInfo: {name:user?.displayName,email:user?.email},
@@ -260,14 +269,11 @@ const MealDetails = () => {
                         </button>
                         {likes}
                       </p>
-
-                      <Link>
-                        <button
-                         onClick={handleMealRequest}
-                         className="btn btn-outline  transition duration-500  font-extrabold text-[#385398] merienda">
-                          Meal Request
-                        </button>
-                      </Link>
+                          <button
+                          onClick={handleMealRequest}
+                          className="btn btn-outline  transition duration-500  font-extrabold text-[#385398] merienda">
+                           Meal Request
+                         </button>
                     </div>
                   </div>
                 </div>

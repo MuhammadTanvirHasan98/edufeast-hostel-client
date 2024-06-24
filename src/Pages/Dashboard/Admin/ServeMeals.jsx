@@ -30,7 +30,7 @@ const ServeMeals = () => {
 
           if(data?.modifiedCount>0){
             Swal.fire({
-              title: "Role Updated!",
+              title: "Served Meal",
               text: "Your meal has been served successfully",
               icon: "success",
             });
@@ -118,7 +118,29 @@ const ServeMeals = () => {
 
 
                           <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                            {meal?.status}
+                          <div
+                              className={`inline-flex items-center px-3 py-1 rounded-lg gap-x-2 
+                            ${
+                              meal?.status === "Pending" &&
+                              "bg-orange-100/60 text-orange-400"
+                            }
+                            ${
+                              meal?.status === "Served" &&
+                              "bg-blue-100/60 text-blue-500"
+                            }
+                             `}
+                            >
+                              <span
+                                className={`h-1.5 w-1.5 rounded-full
+                               ${meal?.status === "Pending" && "bg-orange-400"}
+                               ${
+                                 meal?.status === "Served" && "bg-blue-500"
+                               }`}
+                              ></span>
+                              <h2 className="text-sm font-normal ">
+                                {meal?.status}
+                              </h2>
+                            </div>
                           </td>
 
 
@@ -126,6 +148,7 @@ const ServeMeals = () => {
                           <td className="px-4 py-4 text-sm flex justify-center whitespace-nowrap">
                             <button
                               onClick={() => handleServeMeal(meal?._id)}
+                              disabled={meal?.status === 'Served'}
                               className="btn btn-sm hover:bg-blue-100 text-blue-600"
                             >
                               Serve Meal

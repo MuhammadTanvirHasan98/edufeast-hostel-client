@@ -16,6 +16,8 @@ import DasAllMeals from "../Pages/Dashboard/Admin/DasAllMeals";
 import AllReviews from "../Pages/Dashboard/Admin/AllReviews";
 import ServeMeals from "../Pages/Dashboard/Admin/ServeMeals";
 import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import UserRoute from "./UserRoute";
 
 const router = createBrowserRouter([
   {
@@ -51,8 +53,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
+      // User Routes
       {
         index: true,
         element: (
@@ -65,7 +72,9 @@ const router = createBrowserRouter([
         path: "requestedMeals",
         element: (
           <PrivateRoute>
-            <RequestedMeals />
+            <UserRoute>
+              <RequestedMeals />
+            </UserRoute>
           </PrivateRoute>
         ),
       },
@@ -73,7 +82,9 @@ const router = createBrowserRouter([
         path: "myReviews",
         element: (
           <PrivateRoute>
-            <MyReviews />
+            <UserRoute>
+              <MyReviews />
+            </UserRoute>
           </PrivateRoute>
         ),
       },
@@ -81,15 +92,21 @@ const router = createBrowserRouter([
         path: "paymentHistory",
         element: (
           <PrivateRoute>
-            <PaymentHistory />
+            <UserRoute>
+              <PaymentHistory />
+            </UserRoute>
           </PrivateRoute>
         ),
       },
+
+      // Admin Routes
       {
         path: "manageUsers",
         element: (
           <PrivateRoute>
-            <ManageUsers />
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -97,7 +114,9 @@ const router = createBrowserRouter([
         path: "allMeals",
         element: (
           <PrivateRoute>
-            <DasAllMeals />
+            <AdminRoute>
+              <DasAllMeals />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -105,7 +124,9 @@ const router = createBrowserRouter([
         path: "allReviews",
         element: (
           <PrivateRoute>
-            <AllReviews />
+            <AdminRoute>
+              <AllReviews />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -113,7 +134,9 @@ const router = createBrowserRouter([
         path: "serveMeals",
         element: (
           <PrivateRoute>
-            <ServeMeals />
+            <AdminRoute>
+              <ServeMeals />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },

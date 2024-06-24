@@ -1,4 +1,5 @@
 import LoadingSpinner from "../../../Components/Common/LoadingSpinner";
+import useAdmin from "../../../Hooks/useAdmin";
 import useAuth from "../../../Hooks/useAuth";
 import useProfile from "../../../Hooks/useProfile";
 
@@ -6,8 +7,8 @@ const UserProfile = () => {
   const { profile, isLoading } = useProfile();
   const {loading} = useAuth();
   console.log(profile, isLoading);
-
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+ 
 
   return (
     <div>
@@ -46,6 +47,10 @@ const UserProfile = () => {
                       <span
                         className={`${
                           profile?.badge === "Bronze" && "text-yellow-500"
+                        }${
+                          profile?.badge === "Silver" && "text-gray-500"
+                        }${
+                          profile?.badge === "Platinum" && "text-blue-400"
                         }`}
                       >
                         {" "}

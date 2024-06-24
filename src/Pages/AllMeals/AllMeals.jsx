@@ -101,7 +101,7 @@ const AllMeals = () => {
       {isLoading ? (
         <div><LoadingSpinner smallHeight={true}/></div>
       ) : allMeals.length === 0 ? (
-        <EmptyStateText/>
+        <EmptyStateText text={'You have to try more...'}/>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
           {allMeals.map((meal) => (

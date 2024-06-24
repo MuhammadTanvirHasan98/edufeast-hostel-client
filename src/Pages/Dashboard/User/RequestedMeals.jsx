@@ -130,7 +130,7 @@ const RequestedMeals = () => {
                               "bg-orange-100/60 text-orange-400"
                             }
                             ${
-                              meal?.status === "In Progress" &&
+                              meal?.status === "Served" &&
                               "bg-blue-100/60 text-blue-500"
                             }
                              `}
@@ -139,9 +139,8 @@ const RequestedMeals = () => {
                                 className={`h-1.5 w-1.5 rounded-full
                                ${meal?.status === "Pending" && "bg-orange-400"}
                                ${
-                                 meal?.status === "In Progress" && "bg-blue-500"
-                               }
-                               `}
+                                 meal?.status === "Served" && "bg-blue-500"
+                               }`}
                               ></span>
                               <h2 className="text-sm font-normal ">
                                 {meal?.status}
@@ -153,6 +152,7 @@ const RequestedMeals = () => {
                           <td className="px-4 py-4 text-sm flex justify-center whitespace-nowrap">
                             <button
                               onClick={() => handleDelete(meal?._id)}
+                              disabled={meal?.status === "Served"}
                               className="btn btn-sm hover:bg-red-100/80 text-red-500"
                             >
                               <RiDeleteBin2Line className="text-xl " />

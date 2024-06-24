@@ -136,6 +136,7 @@ const ManageUsers = () => {
                           <td className="px-4 py-4 text-sm flex justify-center whitespace-nowrap">
                             <button
                               onClick={() => handleMakeAdmin(user?._id)}
+                              disabled={user?.role === 'admin'}
                               className="btn btn-sm hover:bg-blue-100 text-blue-600"
                             >
                               Make Admin

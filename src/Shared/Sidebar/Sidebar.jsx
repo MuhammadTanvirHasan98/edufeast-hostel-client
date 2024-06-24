@@ -16,14 +16,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
+import LoadingSpinner from "../../Components/Common/LoadingSpinner";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
   const navigate = useNavigate();
-
-  const [isAdminData] = useAdmin();
-
+  const [isAdmin, isLoading] = useAdmin();
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -81,7 +80,7 @@ const Sidebar = () => {
             {/*  Menu Items */}
             <nav>
               {/* Profile Menu */}
-              {isAdminData ? (
+              { isLoading ? <LoadingSpinner/> : isAdmin ? (
                 <>
                   <NavLink
                     to="/dashboard"
@@ -100,90 +99,102 @@ const Sidebar = () => {
                   </NavLink>
 
                   {/* Manage Users: */}
-              <NavLink
-                to="manageUsers"
-                end
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100  hover:text-cyan-600 ${
-                    isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
-                  }`
-                }
-              >
-                <BsPeople className="w-5 h-5" />
-                <span className="mx-4 font-medium">Manage Users</span>
-              </NavLink>
+                  <NavLink
+                    to="manageUsers"
+                    end
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100  hover:text-cyan-600 ${
+                        isActive
+                          ? "bg-blue-100  text-cyan-600"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <BsPeople className="w-5 h-5" />
+                    <span className="mx-4 font-medium">Manage Users</span>
+                  </NavLink>
 
-              {/* Add Meal: */}
-              <NavLink
-                to="addMeal"
-                end
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
-                    isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
-                  }`
-                }
-              >
-                <IoBagAddOutline className="w-5 h-5" />
-                <span className="mx-4 font-medium">Add Meal</span>
-              </NavLink>
+                  {/* Add Meal: */}
+                  <NavLink
+                    to="addMeal"
+                    end
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
+                        isActive
+                          ? "bg-blue-100  text-cyan-600"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <IoBagAddOutline className="w-5 h-5" />
+                    <span className="mx-4 font-medium">Add Meal</span>
+                  </NavLink>
 
-              {/* All Meals:*/}
-              <NavLink
-                to="allMeals"
-                end
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
-                    isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
-                  }`
-                }
-              >
-                <MdOutlineNoMeals className="w-5 h-5" />
+                  {/* All Meals:*/}
+                  <NavLink
+                    to="allMeals"
+                    end
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
+                        isActive
+                          ? "bg-blue-100  text-cyan-600"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <MdOutlineNoMeals className="w-5 h-5" />
 
-                <span className="mx-4 font-medium">All Meals</span>
-              </NavLink>
+                    <span className="mx-4 font-medium">All Meals</span>
+                  </NavLink>
 
-              {/* All Reviews: */}
-              <NavLink
-                to="allReviews"
-                end
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100  hover:text-cyan-600 ${
-                    isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
-                  }`
-                }
-              >
-                <MdOutlineAddComment className="w-5 h-5" />
-                <span className="mx-4 font-medium">All Reviews</span>
-              </NavLink>
+                  {/* All Reviews: */}
+                  <NavLink
+                    to="allReviews"
+                    end
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100  hover:text-cyan-600 ${
+                        isActive
+                          ? "bg-blue-100  text-cyan-600"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <MdOutlineAddComment className="w-5 h-5" />
+                    <span className="mx-4 font-medium">All Reviews</span>
+                  </NavLink>
 
-              {/* Serve Meals: */}
-              <NavLink
-                to="serveMeals"
-                end
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
-                    isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
-                  }`
-                }
-              >
-                <BiDish className="w-5 h-5" />
-                <span className="mx-4 font-medium">Serve Meals</span>
-              </NavLink>
+                  {/* Serve Meals: */}
+                  <NavLink
+                    to="serveMeals"
+                    end
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
+                        isActive
+                          ? "bg-blue-100  text-cyan-600"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <BiDish className="w-5 h-5" />
+                    <span className="mx-4 font-medium">Serve Meals</span>
+                  </NavLink>
 
-              {/* Upcoming Meals: */}
-              <NavLink
-                to="upcomingMeals"
-                end
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
-                    isActive ? "bg-blue-100  text-cyan-600" : "text-gray-600"
-                  }`
-                }
-              >
-                <MdOutlineUpcoming className="w-5 h-5" />
+                  {/* Upcoming Meals: */}
+                  <NavLink
+                    to="upcomingMeals"
+                    end
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-blue-100   hover:text-cyan-600 ${
+                        isActive
+                          ? "bg-blue-100  text-cyan-600"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <MdOutlineUpcoming className="w-5 h-5" />
 
-                <span className="mx-4 font-medium">Upcoming Meals</span>
-              </NavLink>
+                    <span className="mx-4 font-medium">Upcoming Meals</span>
+                  </NavLink>
                 </>
               ) : (
                 <>
