@@ -292,15 +292,25 @@ const MealDetails = () => {
                     </p>
 
                     <div>
-                      <button
-                        className="btn btn-outline text-cyan-600 hover:bg-cyan-700  md:px-6 px-4 btn-sm font-semibold"
-                        onClick={() =>
-                          document.getElementById("review_modal").showModal()
-                        }
-                      >
-                        {" "}
-                        Give Review
-                      </button>
+                     {
+                      isAdmin ?  <button
+                      className="btn btn-outline text-cyan-600 hover:bg-cyan-700  md:px-6 px-4 btn-sm font-semibold rounded-none rounded-tr-md"
+                      onClick={() => toast.error("Action can be permitted!")
+                      }
+                    >
+                      {" "}
+                      Give Review
+                    </button> :
+                    <button
+                      className="btn btn-outline text-cyan-600 hover:bg-cyan-700  md:px-6 px-4 btn-sm font-semibold rounded-none rounded-tr-md"
+                      onClick={() =>
+                        document.getElementById("review_modal").showModal()
+                      }
+                    >
+                      {" "}
+                      Give Review
+                    </button>
+                     }
 
                       {/* Review Modal */}
 

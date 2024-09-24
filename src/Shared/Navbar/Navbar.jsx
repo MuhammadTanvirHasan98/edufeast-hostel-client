@@ -85,9 +85,10 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to='/' className="md:text-2xl text-xl font-extrabold merienda flex items-center">
-            Edu<span className="text-yellow-600">Feast</span>{" "} Hostel  <IoMdNotificationsOutline className="text-white md:mr-4 ml-2 text-2xl block lg:hidden" />
+            Edu<span className="text-yellow-600">Feast</span>Hostel  <IoMdNotificationsOutline className="text-white md:mr-4 ml-2 text-2xl block lg:hidden" />
           </Link>
         </div>
+        
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
@@ -123,7 +124,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                 onClick={()=> logOut()}
+                 onClick={logOut}
                  className="text-center block bg-gradient-to-tl from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-400 hover:text-yellow-400 text-white rounded-none">Logout</Link>
               </li>
             </ul>

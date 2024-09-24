@@ -106,22 +106,22 @@ const RequestedMeals = () => {
                     <tbody className="bg-white divide-y divide-gray-200 ">
                       {requestedMeals.map((meal) => (
                         <tr key={meal?._id}>
-                          {/* Food Name */}
+                          {/* Meal Title */}
                           <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
                             {meal?.title}
                           </td>
 
-                          {/* Food Category */}
+                          {/* Meal Likes */}
                           <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
                             {meal?.likes}
                           </td>
 
-                          {/* Food Origin */}
+                          {/* Meal Reviews */}
                           <td className="px-4 pl-8 py-4 text-sm text-gray-500  whitespace-nowrap">
                             {meal?.reviews}
                           </td>
 
-                          {/* Price */}
+                          {/* Meal status */}
                           <td className="px-4  text-sm whitespace-nowrap">
                             <div
                               className={`inline-flex items-center px-3 py-1 rounded-lg gap-x-2 

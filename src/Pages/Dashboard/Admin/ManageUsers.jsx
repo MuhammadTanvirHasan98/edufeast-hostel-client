@@ -25,13 +25,13 @@ const ManageUsers = () => {
      console.log(id);
     try {
       Swal.fire({
-        title: "Are you sure to make Admin?",
+        title: "Are you sure to make admin?",
         text: "Role will be changed after your confirmation!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Yes, make!",
       }).then(async (result) => {
         if (result.isConfirmed) {
           const { data } = await axiosSecure.patch(`/makeAdmin/${id}`);
@@ -111,23 +111,43 @@ const ManageUsers = () => {
                     <tbody className="bg-white divide-y divide-gray-200 ">
                       {users.map((user) => (
                         <tr key={user?._id}>
-                          {/* Food Name */}
+                          {/* user name */}
                           <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
                             {user?.name}
                           </td>
 
-                          {/* Food Category */}
+                          {/* user email */}
                           <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
                             {user?.email}
                           </td>
 
-                          {/* Food Origin */}
-                          <td className="px-4 pl-8 py-4 text-sm text-gray-500  whitespace-nowrap">
-                            {user?.badge}
+                          {/* Subscription  status*/}
+                          <td className="px-4  py-4 text-sm text-gray-500  whitespace-nowrap">
+                             <div className={`inline-flex items-center px-3 py-1 rounded-lg gap-x-2 
+                             ${
+                              user?.badge === "Bronze" &&
+                              "bg-[#ffdebc47] text-[#CD7F32]"
+                            }
+                            ${
+                              user?.badge === "Silver" &&
+                              "bg-cyan-100/60 text-cyan-500"
+                            }
+                            ${
+                              user?.badge === "Gold" &&
+                              "bg-yellow-100/60 text-yellow-500"
+                            }
+                            ${
+                              user?.badge === "Platinum" &&
+                              "bg-blue-100/70 text-blue-600"
+                            }
+                             `}>
+                               <p 
+                              >{user?.badge}</p>
+                             </div>
                           </td>
 
 
-                          <td className="px-4 pl-8 py-4 text-sm text-gray-500  whitespace-nowrap">
+                          <td className="px-4  py-4 text-sm text-gray-500  whitespace-nowrap">
                             {user?.role}
                           </td>
 

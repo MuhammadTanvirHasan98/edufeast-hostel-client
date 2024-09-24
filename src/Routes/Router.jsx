@@ -18,6 +18,7 @@ import ServeMeals from "../Pages/Dashboard/Admin/ServeMeals";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import UserRoute from "./UserRoute";
+import AddMeal from "../Pages/Dashboard/Admin/AddMeal";
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,16 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <AdminRoute>
               <ManageUsers />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "addMeal",
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AddMeal/>
             </AdminRoute>
           </PrivateRoute>
         ),

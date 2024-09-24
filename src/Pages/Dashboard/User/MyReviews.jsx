@@ -192,7 +192,7 @@ const MyReviews = () => {
                                   setReviewId(review?._id)
                                   setReviewData(review);
                                 }}
-                                className="btn btn-sm"
+                                className="btn btn-sm hover:bg-blue-100/80"
                               >
                                 <FiEdit className="text-xl text-blue-400" />
                               </button>

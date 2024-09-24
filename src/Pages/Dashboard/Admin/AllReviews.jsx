@@ -50,7 +50,7 @@ const AllReviews = () => {
             Swal.fire({
               position: "top-middle",
               icon: "success",
-              title: "Your meal has been served successfully.",
+              title: "Your review has been deleted successfully.",
               showConfirmButton: false,
               timer: 1500,
             });

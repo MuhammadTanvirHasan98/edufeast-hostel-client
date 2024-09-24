@@ -4,30 +4,32 @@ import { IoCheckmarkDoneOutline } from "react-icons/io5";
 import PaymentModal from "../../Modals/PaymentModal";
 import useAuth from "../../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const Membership = () => {
   const { user } = useAuth();
   const [packagePlan, setPackagePlan] = useState("");
   const [price, setPrice] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [isAdmin] = useAdmin();
+  console.log(!isAdmin);
 
   const packageInfo = {
     price: price,
     plan: packagePlan,
   };
 
-  console.log(packageInfo);
-
   const closeModal = () => {
     setIsOpen(false);
   };
 
   const handleToast = () => {
+     if(isAdmin) return toast.error("Action can not be permitted!")
     toast.error("You have to login first!");
   };
 
   return (
-    <div className="my-56 lg:w-[75%] w-[65%] mx-auto">
+    <div className="my-56 lg:w-[75%] w-[80%] mx-auto">
       <HeadingPart
         heading="Our Membership Packages"
         subHeading="Get Packages"
@@ -37,9 +39,9 @@ const Membership = () => {
         {/* Card 1 */}
         <div className="lg:mb-0 mb-20 shadow-2xl border-2 border-cyan-200 hover:bg-cyan-50 transition duration-500">
           <div className="bg-gradient-to-tr from-cyan-300 to-cyan-600 m-10 -mt-16  p-5 text-center text-white space-y-3 shadow-2xl">
-            <h1 className="text-2xl font-bold ">SILVER PLAN</h1>
-            <p className="lg:text-6xl text-5xl font-semibold">$29</p>
-            <p className="text-lg">PER MONTH</p>
+            <h1 className="md:text-2xl text-xl font-bold ">SILVER PLAN</h1>
+            <p className="lg:text-6xl md:text-5xl text-4xl  font-semibold">$29</p>
+            <p className="md:text-lg">PER MONTH</p>
           </div>
 
           <div className="lg:px-10 px-6 lg:pb-10 pb-6 space-y-2 font-semibold ">
@@ -62,7 +64,7 @@ const Membership = () => {
 
             {/* Button */}
             <div className="flex items-center justify-center">
-              {user ? (
+              {user  && !isAdmin ? (
                 <button
                   onClick={() => {
                     setIsOpen(true);
@@ -88,9 +90,9 @@ const Membership = () => {
         {/* Card 2 */}
         <div className="lg:mb-0 mb-20 shadow-2xl border-2 border-yellow-200 hover:bg-yellow-50 transition duration-500">
           <div className="bg-gradient-to-tr from-yellow-400 to-yellow-600 m-10 -mt-16  p-5 text-center text-white space-y-3 shadow-2xl ">
-            <h1 className="text-2xl font-bold ">GOLD PLAN</h1>
-            <p className="lg:text-6xl text-5xl font-semibold">$69</p>
-            <p className="text-lg">PER MONTH</p>
+            <h1 className="md:text-2xl text-xl font-bold ">GOLD PLAN</h1>
+            <p className="lg:text-6xl md:text-5xl text-4xl  font-semibold">$69</p>
+            <p className="md:text-lg">PER MONTH</p>
           </div>
 
           <div className="lg:px-10 px-6 lg:pb-10 pb-6 space-y-2 font-semibold ">
@@ -112,7 +114,7 @@ const Membership = () => {
             </p>
             <div className="flex items-center justify-center">
 
-            {user ? (
+            {user  && !isAdmin ? (
                  <button
                  onClick={() => {
                    setIsOpen(true);
@@ -139,9 +141,9 @@ const Membership = () => {
         {/* Card 3 */}
         <div className="lg:mb-0 mb-20 shadow-2xl border-2 border-blue-200 hover:bg-blue-50 transition duration-500">
           <div className="bg-gradient-to-tr from-blue-300 to-blue-600 m-10 -mt-16  p-5 text-center text-white space-y-3 shadow-2xl ">
-            <h1 className="text-2xl font-bold ">PLATINUM PLAN</h1>
-            <p className="lg:text-6xl text-5xl font-semibold">$99</p>
-            <p className="text-lg">PER MONTH</p>
+            <h1 className="md:text-2xl text-xl font-bold ">PLATINUM PLAN</h1>
+            <p className="lg:text-6xl md:text-5xl text-4xl font-semibold">$99</p>
+            <p className="md:text-lg">PER MONTH</p>
           </div>
 
           <div className="lg:px-10 px-6 lg:pb-10 pb-6 space-y-2 font-semibold">
@@ -162,7 +164,7 @@ const Membership = () => {
               Get 65% off next time
             </p>
             <div className="flex items-center justify-center">
-            {user ? (
+            { user && !isAdmin ? (
                <button
                onClick={() => {
                  setIsOpen(true);

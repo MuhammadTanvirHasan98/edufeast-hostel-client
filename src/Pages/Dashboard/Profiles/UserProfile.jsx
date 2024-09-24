@@ -44,18 +44,27 @@ const UserProfile = () => {
                       !isAdmin && 
                     <p>
                       Badge:{" "}
-                      <span
-                        className={`${
-                          profile?.badge === "Bronze" && "text-yellow-500"
-                        }${
-                          profile?.badge === "Silver" && "text-gray-500"
-                        }${
-                          profile?.badge === "Platinum" && "text-blue-400"
-                        }`}
-                      >
-                        {" "}
-                        {profile?.badge}
-                      </span>
+                      <div className={`inline-flex items-center px-3 py-1 rounded-lg gap-x-2 mt-2
+                             ${
+                              profile?.badge=== "Bronze" &&
+                              "bg-[#ffdebc47] text-[#CD7F32]"
+                            }
+                            ${
+                              profile?.badge === "Silver" &&
+                              "bg-cyan-100/60 text-cyan-500"
+                            }
+                            ${
+                              profile?.badge === "Gold" &&
+                              "bg-yellow-100/60 text-yellow-500"
+                            }
+                            ${
+                              profile?.badge === "Platinum" &&
+                              "bg-blue-100/70 text-blue-600"
+                            }
+                             `}>
+                               <p 
+                              >{profile?.badge}</p>
+                             </div>
                     </p>
                     }
                   </div>
